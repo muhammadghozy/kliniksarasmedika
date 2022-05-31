@@ -45,10 +45,10 @@
 								<form class="row g-3" action="/rawat-jalan" method="POST">
 									@csrf
 									
-									{{-- <div class="col-md-12">
+									<div class="col-md-12">
 										<label for="ttl" class="form-label">Tempat, Tanggal Lahir</label>
 										<input type="text" name="ttl" class="form-control" id="ttl" placeholder="Tempat, Tanggal Lahir">
-									</div> --}}
+									</div>
 									<div class="col-md-12">
 										<label for="bb" class="form-label">Berat Badan</label>
 										<input type="text" name="bb" class="form-control" id="bb" placeholder="Berat Badan">

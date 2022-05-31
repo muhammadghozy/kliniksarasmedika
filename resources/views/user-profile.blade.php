@@ -77,27 +77,28 @@
 								<div class="card">
 									<div class="card-body">
 										<form action="/user-profile" method="POST">
+											@method("put")
 											@csrf
 
 										<div class="row mb-3">
 											<div class="col-sm-3">
-												<h6 class="mb-0">Nama Lengkap</h6>
+												<h6 class="mb-0" for="nama">Nama Lengkap</h6>
 											</div>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" value="{{ auth()->user()->nama }}" />
+												<input type="text" name="nama" class="form-control" id="nama" value="{{ auth()->user()->nama }}" />
 											</div>
 										</div>
 										<div class="row mb-3">
 											<div class="col-sm-3">
-												<h6 class="mb-0">NIK</h6>
+												<h6 class="mb-0" for="nik">NIK</h6>
 											</div>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" value="{{ auth()->user()->nik }}" />
+												<input type="text" name="nik" class="form-control" id="nik" value="{{ auth()->user()->nik }}" />
 											</div>
 										</div>
 										<div class="row mb-3">
 											<div class="col-sm-3">
-												<h6 for="ttl" class="mb-0">Tempat, Tanggal Lahir</h6>
+												<h6 for="ttl" class="mb-0" for="ttl">Tempat, Tanggal Lahir</h6>
 											</div>
 											<div class="col-sm-9">
 												<input type="text" name="ttl" id="ttl" class="form-control" value="{{ auth()->user()->ttl }}" />
@@ -105,18 +106,18 @@
 										</div>
 										<div class="row mb-3">
 											<div class="col-sm-3">
-												<h6 class="mb-0">No. Telp</h6>
+												<h6 class="mb-0" for="telp">No. Telp</h6>
 											</div>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" value="{{ auth()->user()->telp }}" />
+												<input type="text" name="telp" class="form-control" id="telp" value="{{ auth()->user()->telp }}" />
 											</div>
 										</div>
 										<div class="row mb-3">
 											<div class="col-sm-3">
-												<h6 class="mb-0">Alamat</h6>
+												<h6 class="mb-0" for="alamat">Alamat</h6>
 											</div>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" value="{{ auth()->user()->alamat }}" />
+												<input type="text" name="alamat" class="form-control" id="alamat" value="{{ auth()->user()->alamat }}" />
 											</div>
 										</div>
 										{{-- <div class="row mb-3">

@@ -11,18 +11,23 @@ class ProfileController extends Controller
         return view('user-profile');
     }
 
-    public function store(Request $request)
+    public function update(Request $request)
     {
-        $validateData = $request->validate([
+        $request->validate([
             'nama' => 'max:255',
             'nik' => 'max:18|unique:users',
             'ttl' => 'required|max:255',
-            'email' => 'email:dns|max:255|unique:users',
-			'alamat' => 'max:255',
-			'telp' => 'max:14',
+			'alamat' => 'required|max:255',
+			'telp' => 'required|max:14',
         ]);
 
-        User::create($validateData);
+        auth()->user()->update([
+            'nama' => $request->nama,
+            'nik' => $request->nik,
+            'ttl' => $request->ttl,
+			'alamat' => $request->alamat,
+			'telp' => $request->telp,
+        ]);
 
 		return redirect('/user-profile')->with('success', 'Berhasil diperbarui');
     }

@@ -42,22 +42,24 @@
 									<h5 class="mb-0 text-white">Formulir Pendaftaran Rawat Inap</h5>
 								</div>
 								<hr>
-								<form class="row g-3">
+								<form class="row g-3" action="/rawat-inap" method="post">
+									@csrf
+
 									<div class="col-md-12">
-										<label for="inputTTL" class="form-label">Tempat Tanggal Lahir</label>
-										<input type="TTL" class="form-control" id="inputTTL">
+										<label for="ttl" class="form-label">Tempat, Tanggal Lahir</label>
+										<input type="text" name="ttl" class="form-control" id="ttl" placeholder="Tempat, Tanggal Lahir">
 									</div>
 									<div class="col-md-12">
-										<label for="inputFirstName" class="form-label">Berat Badan</label>
-										<input type="BB" class="form-control" id="inputBB">
+										<label for="bb" class="form-label">Berat Badan</label>
+										<input type="text" name="bb" class="form-control" id="bb" placeholder="Berat Badan">
 									</div>
 									<div class="col-md-12">
-										<label for="inputLastName" class="form-label">Tinggi Badan</label>
-										<input type="TB" class="form-control" id="inputTB">
+										<label for="tb" class="form-label">Tinggi Badan</label>
+										<input type="text" name="tb" class="form-control" id="tb" placeholder="Tinggi Badan">
 									</div>
 									<div class="col-md-12">
-										<label for="inputTD" class="form-label">Tekanan Darah</label>
-										<input type="TD" class="form-control" id="inputTD">
+										<label for="td" class="form-label">Tekanan Darah</label>
+										<input type="text" name="td" class="form-control" id="td" placeholder="Tekanan Darah">
 									</div>
 									{{-- <div class="col-md-6">
 										<label for="inputEmail" class="form-label">Email</label>
@@ -68,8 +70,16 @@
 										<input type="password" class="form-control" id="inputPassword">
 									</div> --}}
 									<div class="col-12">
-										<label for="inputAddress" class="form-label">Keluhan</label>
-										<textarea class="form-control" id="inputKeluhan" placeholder="Keluhan" rows="3"></textarea>
+										<label for="keluhan" class="form-label">Keluhan</label>
+										<textarea type="text" name="keluhan" class="form-control" id="keluhan" placeholder="Keluhan" rows="3"></textarea>
+									</div>
+									<div class="col-12">
+										<label for="diagnosis" class="form-label">Diagnosis</label>
+										<textarea type="text" name="diagnosis" class="form-control" id="diagnosis" placeholder="Diagnosis" rows="3"></textarea>
+									</div>
+									<div class="col-12">
+										<label for="obat" class="form-label">Obat</label>
+										<textarea type="text" name="obat" class="form-control" id="obat" placeholder="Obat" rows="3"></textarea>
 									</div>
 									{{-- <div class="col-12">
 										<label for="inputAddress2" class="form-label">Address 2</label>

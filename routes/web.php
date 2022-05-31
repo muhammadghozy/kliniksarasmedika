@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserDataController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RawatInapController;
 use App\Http\Controllers\RawatJalanController;
 
 /*
@@ -79,8 +81,11 @@ Route::get('/dashboard', function (){
 })->middleware('auth');
 
 
-// Route::get('/user-profile', [ProfileController::class, 'index'])->name('login')->middleware('guest');
-// Route::post('/user-profile', [ProfileController::class, 'store']);
+Route::get('/user-profile', [UserDataController::class, 'edit'])->middleware('auth');
+Route::post('/user-profile', [UserDataController::class, 'update']);
 
 Route::get('/rawat-jalan', [RawatJalanController::class, 'create'])->middleware('auth');
 Route::post('/rawat-jalan', [RawatJalanController::class, 'store']);
+
+Route::get('/rawat-inap', [RawatInapController::class, 'create'])->middleware('auth');
+Route::post('/rawat-inap', [RawatInapController::class, 'store']);

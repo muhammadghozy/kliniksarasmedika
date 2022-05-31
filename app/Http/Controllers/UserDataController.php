@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RawatJalan;
+use App\Models\UserData;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class RawatJalanController extends Controller
+class UserDataController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class RawatJalanController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -26,7 +25,7 @@ class RawatJalanController extends Controller
      */
     public function create()
     {
-        return view('rawat-jalan');
+        //
     }
 
     /**
@@ -37,31 +36,16 @@ class RawatJalanController extends Controller
      */
     public function store(Request $request)
     {
-        // $user = Auth::user();
-        // $lengkap = User::where('id_user',$user->id)->get()->first();
-        $validateData = $request->validate([
-            // 'id_user' => $user->id,
-            'bb' => 'max:255',
-            'tb' => 'max:255',
-            'td' => 'max:255',
-			'keluhan' => 'max:255',
-			'diagnosis' => 'max:255',
-			'tindakan' => 'max:255',
-        ]);
-
-        RawatJalan::create($validateData);
-
-        return redirect('/rawat-jalan')->with('success', 'Pendaftaran rawat jalan berhasil');
-        // dd('berhasil');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RawatJalan  $rawatJalan
+     * @param  \App\Models\UserData  $userData
      * @return \Illuminate\Http\Response
      */
-    public function show(RawatJalan $rawatJalan)
+    public function show(UserData $userData)
     {
         //
     }
@@ -69,33 +53,45 @@ class RawatJalanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\RawatJalan  $rawatJalan
+     * @param  \App\Models\UserData  $userData
      * @return \Illuminate\Http\Response
      */
-    public function edit(RawatJalan $rawatJalan)
+    public function edit(UserData $userData)
     {
-        //
+        return view('user-profile');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RawatJalan  $rawatJalan
+     * @param  \App\Models\UserData  $userData
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RawatJalan $rawatJalan)
+    public function update(Request $request, UserData $userData)
     {
-        //
+        $att = $request->validate([
+            'nama' => 'max:255',
+            'nik' => 'max:18|unique:users',
+            'ttl' => 'required|max:255',
+            'email' => 'email:dns|max:255',
+			'alamat' => 'required|max:255',
+			'telp' => 'required|max:14',
+        ]);
+
+        User::updateOrCreate($att);
+
+        // return redirect('/user-profile')->with('success', 'Berhasil diperbarui');
+        dd('berhasil');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RawatJalan  $rawatJalan
+     * @param  \App\Models\UserData  $userData
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RawatJalan $rawatJalan)
+    public function destroy(UserData $userData)
     {
         //
     }

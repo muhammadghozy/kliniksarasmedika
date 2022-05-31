@@ -52,7 +52,7 @@
 
 											<div class="col-sm-12">
 												<label for="nama" class="form-label">Nama Lengkap</label>
-												<input type="text" name="nama" class="form-control @error ('nama') is-invalid @enderror" id="name" placeholder="Nama Lengkap" required value="{{ old('nama') }}">
+												<input type="text" name="nama" class="form-control @error ('nama') is-invalid @enderror" id="nama" placeholder="Nama Lengkap" required value="{{ old('nama') }}">
 												@error('nama')
 												<div class="invalid-feedback">
 													{{ $message }}
