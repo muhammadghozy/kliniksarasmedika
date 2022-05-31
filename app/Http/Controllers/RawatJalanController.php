@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jalan;
+use App\Models\RawatJalan;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class JalanController extends Controller
+class RawatJalanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class JalanController extends Controller
      */
     public function index()
     {
-        return view('rawat-jalan');
+        //
     }
 
     /**
@@ -24,7 +26,7 @@ class JalanController extends Controller
      */
     public function create()
     {
-        //
+        return view('rawat-jalan');
     }
 
     /**
@@ -35,22 +37,31 @@ class JalanController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
+        // $lengkap = User::where('id_user',$user->id)->get()->first();
         $validateData = $request->validate([
-            'ttl' => 'max:255',
+            // 'id_user' => $user->id,
+            // 'ttl' => 'max:255',
             'bb' => 'max:255',
             'tb' => 'max:255',
             'td' => 'max:255',
-            'keluhan' => 'requaired|max:255',
-        ])
+			'keluhan' => 'max:255',
+			'diagnosis' => 'max:255',
+			'tindakan' => 'max:255',
+        ]);
+
+        RawatJalan::create($validateData);
+
+        dd('berhasil');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Jalan  $jalan
+     * @param  \App\Models\RawatJalan  $rawatJalan
      * @return \Illuminate\Http\Response
      */
-    public function show(Jalan $jalan)
+    public function show(RawatJalan $rawatJalan)
     {
         //
     }
@@ -58,10 +69,10 @@ class JalanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Jalan  $jalan
+     * @param  \App\Models\RawatJalan  $rawatJalan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Jalan $jalan)
+    public function edit(RawatJalan $rawatJalan)
     {
         //
     }
@@ -70,10 +81,10 @@ class JalanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Jalan  $jalan
+     * @param  \App\Models\RawatJalan  $rawatJalan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Jalan $jalan)
+    public function update(Request $request, RawatJalan $rawatJalan)
     {
         //
     }
@@ -81,10 +92,10 @@ class JalanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Jalan  $jalan
+     * @param  \App\Models\RawatJalan  $rawatJalan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jalan $jalan)
+    public function destroy(RawatJalan $rawatJalan)
     {
         //
     }

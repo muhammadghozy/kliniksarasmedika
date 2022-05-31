@@ -42,24 +42,24 @@
 									<h5 class="mb-0 text-white">Formulir Pendaftaran Rawat Jalan</h5>
 								</div>
 								<hr>
-								<form class="row g-3" action="/rawat-jalan" method="post">
+								<form class="row g-3" action="/rawat-jalan" method="POST">
 									@csrf
 									
-									<div class="col-md-12">
+									{{-- <div class="col-md-12">
 										<label for="ttl" class="form-label">Tempat, Tanggal Lahir</label>
 										<input type="text" name="ttl" class="form-control" id="ttl" placeholder="Tempat, Tanggal Lahir">
-									</div>
+									</div> --}}
 									<div class="col-md-12">
 										<label for="bb" class="form-label">Berat Badan</label>
 										<input type="text" name="bb" class="form-control" id="bb" placeholder="Berat Badan">
 									</div>
 									<div class="col-md-12">
 										<label for="tb" class="form-label">Tinggi Badan</label>
-										<input type="text" class="form-control" id="tb" placeholder="Tinggi Badan">
+										<input type="text" name="tb" class="form-control" id="tb" placeholder="Tinggi Badan">
 									</div>
 									<div class="col-md-12">
 										<label for="td" class="form-label">Tekanan Darah</label>
-										<input type="text" name="tb" class="form-control" id="td" placeholder="Tekanan Darah">
+										<input type="text" name="td" class="form-control" id="td" placeholder="Tekanan Darah">
 									</div>
 									{{-- <div class="col-md-6">
 										<label for="inputEmail" class="form-label">Email</label>
