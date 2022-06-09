@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RawatJalan;
-use App\Models\User;
+use App\Models\RekamInap;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class RawatJalanController extends Controller
+class RekamInapController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +24,7 @@ class RawatJalanController extends Controller
      */
     public function create()
     {
-        return view('rawat-jalan');
+        //
     }
 
     /**
@@ -37,30 +35,16 @@ class RawatJalanController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
-            'bb' => 'max:255',
-            'tb' => 'max:255',
-            'td' => 'max:255',
-			'keluhan' => 'required|max:255',
-			'diagnosis' => 'max:255',
-			'tindakan' => 'max:255',
-        ]);
-
-        $validateData['id_user'] = auth()->user()->id;
-
-        RawatJalan::create($validateData);
-
-        return redirect('/rawat-jalan')->with('success', 'Pendaftaran rawat jalan berhasil');
-        // dd('berhasil');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RawatJalan  $rawatJalan
+     * @param  \App\Models\RekamInap  $rekamInap
      * @return \Illuminate\Http\Response
      */
-    public function show(RawatJalan $rawatJalan)
+    public function show(RekamInap $rekamInap)
     {
         //
     }
@@ -68,10 +52,10 @@ class RawatJalanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\RawatJalan  $rawatJalan
+     * @param  \App\Models\RekamInap  $rekamInap
      * @return \Illuminate\Http\Response
      */
-    public function edit(RawatJalan $rawatJalan)
+    public function edit(RekamInap $rekamInap)
     {
         //
     }
@@ -80,10 +64,10 @@ class RawatJalanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RawatJalan  $rawatJalan
+     * @param  \App\Models\RekamInap  $rekamInap
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RawatJalan $rawatJalan)
+    public function update(Request $request, RekamInap $rekamInap)
     {
         //
     }
@@ -91,10 +75,10 @@ class RawatJalanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RawatJalan  $rawatJalan
+     * @param  \App\Models\RekamInap  $rekamInap
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RawatJalan $rawatJalan)
+    public function destroy(RekamInap $rekamInap)
     {
         //
     }

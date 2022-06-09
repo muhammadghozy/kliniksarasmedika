@@ -33,6 +33,18 @@
 				<div class="row">
 					<div class="col-xl-11 mx-auto">
 						{{-- <h6 class="mb-0 text-uppercase">Basic Form</h6> --}}
+						@if(session()->has('success'))
+							<div class="alert border-0 border-start border-5 border-white alert-dismissible fade show py-2">
+								<div class="d-flex align-items-center">
+									<div class="font-35 text-white"><i class='bx bxs-check-circle'></i>
+									</div>
+									<div class="ms-3">
+										{{ session('success') }}
+									</div>
+								</div>
+								<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+							</div>
+						@endif
 						<hr/>
 						<div class="card border-top border-0 border-4 border-white">
 							<div class="card-body p-5">
@@ -51,15 +63,15 @@
 									</div>
 									<div class="col-md-12">
 										<label for="bb" class="form-label">Berat Badan</label>
-										<input type="text" name="bb" class="form-control" id="bb" placeholder="Berat Badan">
+										<input type="text" name="bb" class="form-control" id="bb" placeholder="Berat Badan" value="{{ old('bb') }}">
 									</div>
 									<div class="col-md-12">
 										<label for="tb" class="form-label">Tinggi Badan</label>
-										<input type="text" name="tb" class="form-control" id="tb" placeholder="Tinggi Badan">
+										<input type="text" name="tb" class="form-control" id="tb" placeholder="Tinggi Badan" value="{{ old('tb') }}">
 									</div>
 									<div class="col-md-12">
 										<label for="td" class="form-label">Tekanan Darah</label>
-										<input type="text" name="td" class="form-control" id="td" placeholder="Tekanan Darah">
+										<input type="text" name="td" class="form-control" id="td" placeholder="Tekanan Darah" value="{{ old('td') }}">
 									</div>
 									{{-- <div class="col-md-6">
 										<label for="inputEmail" class="form-label">Email</label>
@@ -71,15 +83,15 @@
 									</div> --}}
 									<div class="col-12">
 										<label for="keluhan" class="form-label">Keluhan</label>
-										<textarea type="text" name="keluhan" class="form-control" id="keluhan" placeholder="Keluhan" rows="3"></textarea>
+										<textarea type="text" name="keluhan" class="form-control" id="keluhan" placeholder="Keluhan" rows="3" required value="{{ old('keluhan') }}"></textarea>
 									</div>
 									<div class="col-12">
 										<label for="diagnosis" class="form-label">Diagnosis</label>
-										<textarea type="text" name="diagnosis" class="form-control" id="diagnosis" placeholder="Diagnosis" rows="3"></textarea>
+										<textarea type="text" name="diagnosis" class="form-control" id="diagnosis" placeholder="Diagnosis" rows="3" value="{{ old('diagnosis') }}"></textarea>
 									</div>
 									<div class="col-12">
 										<label for="obat" class="form-label">Obat</label>
-										<textarea type="text" name="obat" class="form-control" id="obat" placeholder="Obat" rows="3"></textarea>
+										<textarea type="text" name="obat" class="form-control" id="obat" placeholder="Obat" rows="3" value="{{ old('obat') }}"></textarea>
 									</div>
 									{{-- <div class="col-12">
 										<label for="inputAddress2" class="form-label">Address 2</label>

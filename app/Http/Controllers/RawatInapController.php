@@ -35,22 +35,21 @@ class RawatInapController extends Controller
      */
     public function store(Request $request)
     {
-        // $user = Auth::user();
-        // $lengkap = User::where('id_user',$user->id)->get()->first();
         $validateData = $request->validate([
-            // 'id_user' => $user->id,
             'bb' => 'max:255',
             'tb' => 'max:255',
             'td' => 'max:255',
-			'keluhan' => 'max:255',
+			'keluhan' => 'required|max:255',
 			'diagnosis' => 'max:255',
 			'obat' => 'max:255',
         ]);
 
+        $validateData['id_user'] = auth()->user()->id;
+
         RawatInap::create($validateData);
 
-        // return redirect('/rawat-jalan')->with('success', 'Pendaftaran rawat jalan berhasil');
-        dd('berhasil');
+        return redirect('/rawat-inap')->with('success', 'Pendaftaran rawat inap berhasil');
+        // dd('berhasil');
     }
 
     /**

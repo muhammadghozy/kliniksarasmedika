@@ -33,15 +33,22 @@
 									<th>No</th>
 									<th>Nama</th>
 									<th>Keluhan</th>
+									<th>Diagnosis</th>
+									<th>Tindakan</th>
 									<th>Tanggal Periksa</th>
 								</tr>
 							</thead>
 							<tbody>
+								@foreach ($rawat_jalans as $RawatJalan)
 								<tr>
 									<td>1</td>
 									<td>Al</td>
 									<td>Pusing, Mual, Panas</td>
+									<td>Pusing, Mual, Panas</td>
+									<td>Pusing, Mual, Panas</td>
 									<td>25/05/2022</td>
+								</tr>								
+								@endforeach
 							</tbody>
 						</table>
 					</div>
