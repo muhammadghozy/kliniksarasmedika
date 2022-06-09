@@ -28,21 +28,27 @@
 					<div class="card-body">
 						<div class="table-responsive">
 							<table id="example2" class="table table-striped table-bordered">
-								<thead>
+								<thead>									
 									<tr>
 										<th>No</th>
-										<th>Nama</th>
-										<th>Penyakit</th>
+										{{-- <th>Nama</th> --}}
+										<th>Keluhan</th>
+										<th>Diagnosis</th>
+										<th>Obat</th>
 										<th>Tanggal Masuk</th>
 									</tr>
 								</thead>
 								<tbody>
+									@foreach ($rawat_inaps as $rawat_inap)
 									<tr>
-										<td>1</td>
-										<td>Udin</td>
-										<td>Demam Berdarah</td>
-										<td>27/05/2022</td>
+										<td>{{ $loop->iteration }}</td>
+										{{-- <td>Udin</td> --}}
+										<td>{{ $rawat_inap->keluhan }}</td>
+										<td>{{ $rawat_inap->diagnosis }}</td>
+										<td>{{ $rawat_inap->obat }}</td>
+										<td>{{ $rawat_inap->created_at }}</td>
 									</tr>
+									@endforeach
 								</tbody>
 							</table>
 						</div>

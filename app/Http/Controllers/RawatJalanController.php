@@ -16,7 +16,9 @@ class RawatJalanController extends Controller
      */
     public function index()
     {
-        //
+        return view('rekam-medis-rawat-jalan',[
+            'rawat_jalans' => RawatJalan::where('id_user', auth()->user()->id)->get()
+        ]);
     }
 
     /**

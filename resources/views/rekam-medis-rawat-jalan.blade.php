@@ -31,7 +31,7 @@
 							<thead>
 								<tr>
 									<th>No</th>
-									<th>Nama</th>
+									{{-- <th>Nama</th> --}}
 									<th>Keluhan</th>
 									<th>Diagnosis</th>
 									<th>Tindakan</th>
@@ -39,14 +39,14 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach ($rawat_jalans as $RawatJalan)
+								@foreach ($rawat_jalans as $rawat_jalan)
 								<tr>
-									<td>1</td>
-									<td>Al</td>
-									<td>Pusing, Mual, Panas</td>
-									<td>Pusing, Mual, Panas</td>
-									<td>Pusing, Mual, Panas</td>
-									<td>25/05/2022</td>
+									<td>{{ $loop->iteration }}</td>
+									{{-- <td>{{ $rawat_jalan->nama }}</td> --}}
+									<td>{{ $rawat_jalan->keluhan }}</td>
+									<td>{{ $rawat_jalan->diagnosis }}</td>
+									<td>{{ $rawat_jalan->tindakan }}</td>
+									<td>{{ $rawat_jalan->created_at }}</td>
 								</tr>								
 								@endforeach
 							</tbody>
