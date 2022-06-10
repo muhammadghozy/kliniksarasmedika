@@ -26,6 +26,15 @@
 						<div class="menu-title">User Profile</div>
 					</a>
 				</li>
+				@if((Auth::user()->role ?? '') == 'Admin')
+				<li>
+					<a href="{{ url('user-management') }}">
+						<div class="parent-icon"><i class="bx bx-group"></i>
+						</div>
+						<div class="menu-title">User Management</div>
+					</a>
+				</li>
+				@endif
 				<li class="">
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="bx bx-donate-blood"></i>

@@ -55,6 +55,10 @@ Route::get('/rekam-medis-rawat-inap-admin', function () {
     return view('rekam-medis-rawat-inap-admin');
 });
 
+Route::get('/user-management', function () {
+    return view('user-management');
+});
+
 
 
 // Route::get('/register', function () {
