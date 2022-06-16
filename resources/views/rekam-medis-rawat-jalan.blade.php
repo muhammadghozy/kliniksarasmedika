@@ -40,14 +40,16 @@
 							</thead>
 							<tbody>
 								@foreach ($rawat_jalans as $rawat_jalan)
+								@foreach ($tanggal)
 								<tr>
 									<td>{{ $loop->iteration }}</td>
 									{{-- <td>{{ $rawat_jalan->nama }}</td> --}}
 									<td>{{ $rawat_jalan->keluhan }}</td>
 									<td>{{ $rawat_jalan->diagnosis }}</td>
 									<td>{{ $rawat_jalan->tindakan }}</td>
-									<td>{{ $rawat_jalan->created_at }}</td>
+									<td>{{ $tanggal }}</td>
 								</tr>								
+								@endforeach
 								@endforeach
 							</tbody>
 						</table>

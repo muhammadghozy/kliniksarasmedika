@@ -12,6 +12,7 @@
 			</div>
 			<!--navigation-->
 			<ul class="metismenu" id="menu">
+				{{-- @if((Auth::user()->role ?? '') == 'Pasien') --}}
 				<li>
 					<a href="{{ url('dashboard') }}" class="">
 						<div class="parent-icon"><i class='bx bx-home-circle'></i>
@@ -19,6 +20,7 @@
 						<div class="menu-title">Home</div>
 					</a>
 				</li>
+				
 				<li>
 					<a href="{{ url('user-profile') }}">
 						<div class="parent-icon"><i class="bx bx-user-circle"></i>

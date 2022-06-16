@@ -6,6 +6,9 @@ use App\Models\RawatJalan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class RawatJalanController extends Controller
 {
@@ -16,8 +19,16 @@ class RawatJalanController extends Controller
      */
     public function index()
     {
+        $date = new Collection();
+        $createdAt = RawatJalan::where('id_user', auth()->user()->id)->pluck('created_at');
+        for($i = 0; $i < count($createdAt); $i++){
+            $Date = Carbon::parse($createdAt[$i]);
+            $date->push($Date);
+        }
+
         return view('rekam-medis-rawat-jalan',[
-            'rawat_jalans' => RawatJalan::where('id_user', auth()->user()->id)->get()
+            'rawat_jalans' => RawatJalan::where('id_user', auth()->user()->id)->get(),
+            'tanggal' =>$date
         ]);
     }
 
@@ -28,7 +39,15 @@ class RawatJalanController extends Controller
      */
     public function create()
     {
-        return view('rawat-jalan');
+        $users = DB::table('users')
+            ->join('rawat_jalans', 'users.id', '=', 'rawat_jalans.id_user')
+            ->select('users.nama', 'rawat_jalans.keluhan')
+            ->get();
+
+        return view('rawat-jalan',[
+            'datas' => $users
+            // 'data' => User::all(),
+        ]);
     }
 
     /**

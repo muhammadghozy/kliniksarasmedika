@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserData;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -45,7 +45,7 @@ class UserDataController extends Controller
      * @param  \App\Models\UserData  $userData
      * @return \Illuminate\Http\Response
      */
-    public function show(UserData $userData)
+    public function show(User $userData)
     {
         //
     }
@@ -56,9 +56,9 @@ class UserDataController extends Controller
      * @param  \App\Models\UserData  $userData
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserData $userData)
+    public function edit(User $userData)
     {
-        return view('user-profile');
+        // return view('user-profile');
     }
 
     /**
@@ -68,18 +68,28 @@ class UserDataController extends Controller
      * @param  \App\Models\UserData  $userData
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserData $userData)
+    public function update(Request $request, $id)
     {
-        $att = $request->validate([
-            'nama' => 'max:255',
-            'nik' => 'max:18|unique:users',
-            'ttl' => 'required|max:255',
-            'email' => 'email:dns|max:255',
-			'alamat' => 'required|max:255',
-			'telp' => 'required|max:14',
-        ]);
 
-        User::updateOrCreate($att);
+        User::updateOrCreate(
+        ['id' => $id],
+        ['nama' => $request->nama, 
+            'nik'    => $request->nik,
+            'ttl'     => $request->ttl,
+            'telp'    => $request->telp,
+            'alamat'     => $request->alamat,]
+    );
+
+        // $att = $request->validate([
+        //     'nama' => 'max:255',
+        //     'nik' => 'max:18|unique:users',
+        //     'ttl' => 'required|max:255',
+        //     'email' => 'email:dns|max:255',
+		// 	'alamat' => 'required|max:255',
+		// 	'telp' => 'required|max:14',
+        // ]);
+
+        // User::updateOrCreate($att);
 
         // return redirect('/user-profile')->with('success', 'Berhasil diperbarui');
         dd('berhasil');
@@ -91,7 +101,7 @@ class UserDataController extends Controller
      * @param  \App\Models\UserData  $userData
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserData $userData)
+    public function destroy(User $userData)
     {
         //
     }

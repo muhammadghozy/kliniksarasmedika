@@ -76,8 +76,8 @@
 							<div class="col-lg-8">
 								<div class="card">
 									<div class="card-body">
-										<form action="/user-profile" method="POST">
-											@method("put")
+										<form action="/user-profile/{{ auth()->user()->id }}" method="POST" enctype="multipart/form-data">
+											@method("patch")
 											@csrf
 
 										<div class="row mb-3">

@@ -64,7 +64,7 @@
 							
 							<div class="col-md-12">
 								<label for="ttl" class="form-label">Tempat, Tanggal Lahir</label>
-								<input type="text" name="ttl" class="form-control" id="ttl" placeholder="Tempat, Tanggal Lahir">
+								<input type="text" name="ttl" class="form-control" id="ttl" placeholder="Tempat, Tanggal Lahir" value="{{ auth()->user()->ttl }}" disabled>
 							</div>
 							<div class="col-md-12">
 								<label for="bb" class="form-label">Berat Badan</label>
@@ -145,19 +145,19 @@
 									<tr>
 										<th>No</th>
 										<th>Nama</th>
-										<th>Role</th>
+										<th>Keluhan</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
-									{{-- <tr>
+									@foreach ($datas as $data)
+									<tr>
 										<td>{{ $loop->iteration }}</td>
+										<td>{{ $data->nama }}</td>
+										<td>{{ $data->keluhan }}</td>
 										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr> --}}
+									</tr>
+									@endforeach
 								</tbody>
 							</table>
 						</div>

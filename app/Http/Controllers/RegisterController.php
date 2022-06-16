@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class RegisterController extends Controller
@@ -14,6 +16,26 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+		// $request->validate([
+        //     'nama' => 'required|max:255',
+        //     'nik' => 'required|max:18|unique:users',
+        //     'email' => 'required|email:dns|max:255|unique:users',
+        //     'password' => 'required|min:5|max:255',
+		// 	'alamat' => 'max:255',
+		// 	'telp' => 'max:14',
+        // ]);
+
+        // $user = User::create([
+        //     'nama' => $request->nama,
+        //     'email' => $request->email,
+        //     'role'  => 'Pasien',
+        //     'password' => Hash::make($request->password),
+        // ]);
+
+		// event(new Registered($user));
+
+        // Auth::login($user);
+
         $validateData = $request->validate([
             'nama' => 'required|max:255',
             'nik' => 'required|max:18|unique:users',

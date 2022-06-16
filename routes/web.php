@@ -83,8 +83,8 @@ Route::get('/dashboard', function (){
 })->middleware('auth');
 
 
-Route::get('/user-profile', [UserDataController::class, 'edit'])->middleware('auth');
-Route::post('/user-profile', [UserDataController::class, 'update']);
+// Route::get('/user-profile', [UserDataController::class, 'edit'])->middleware('auth');
+Route::patch('/user-profile/{id}', [UserDataController::class, 'update'])->name('update');
 
 Route::get('/rawat-jalan', [RawatJalanController::class, 'create'])->middleware('auth');
 Route::post('/rawat-jalan', [RawatJalanController::class, 'store']);
