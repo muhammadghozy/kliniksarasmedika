@@ -25,10 +25,14 @@ class RawatJalanController extends Controller
             $Date = Carbon::parse($createdAt[$i]);
             $date->push($Date);
         }
-
+        $users = DB::table('users')
+        ->join('rawat_jalans', 'users.id', '=', 'rawat_jalans.id_user')
+        ->select('users.nama', 'rawat_jalans.keluhan', 'rawat_jalans.diagnosis', 'rawat_jalans.tindakan', 'rawat_jalans.created_at')
+        ->get();
         return view('rekam-medis-rawat-jalan',[
             'rawat_jalans' => RawatJalan::where('id_user', auth()->user()->id)->get(),
-            'tanggal' =>$date
+            'tanggal' =>$date,
+            'datas' => $users
         ]);
     }
 
@@ -106,7 +110,19 @@ class RawatJalanController extends Controller
      */
     public function update(Request $request, RawatJalan $rawatJalan)
     {
-        //
+        RawatJalan::updateOrCreate(
+            ['id' => $id],
+            ['ttl'     => $request->ttl,
+                'bb' => $request->bb, 
+                'tb'    => $request->tb,
+                'td'    => $request->td,
+                'keluhan'     => $request->keluhan,
+                'diagnosis' => $request->diagnosis,
+                'tindakan' => $request->tindakan,]
+        );
+    
+            return redirect('/user-profile')->with('success', 'Berhasil diperbarui');
+            // dd('berhasil');
     }
 
     /**

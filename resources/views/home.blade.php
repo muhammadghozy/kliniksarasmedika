@@ -170,8 +170,18 @@
                             </ul>
                         </li> --}}
                         <li>
+                            <a href="/dashboard">Dashboard</a>
+                        </li>
+                        @auth
+                        <li>
+                            <a href="/logout">Logout</a>
+                        </li>
+                        @else
+                        
+                        <li>
                             <a href="/login">Login</a>
                         </li>
+                        @endauth
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div>

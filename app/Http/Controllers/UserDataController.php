@@ -80,19 +80,8 @@ class UserDataController extends Controller
             'alamat'     => $request->alamat,]
     );
 
-        // $att = $request->validate([
-        //     'nama' => 'max:255',
-        //     'nik' => 'max:18|unique:users',
-        //     'ttl' => 'required|max:255',
-        //     'email' => 'email:dns|max:255',
-		// 	'alamat' => 'required|max:255',
-		// 	'telp' => 'required|max:14',
-        // ]);
-
-        // User::updateOrCreate($att);
-
-        // return redirect('/user-profile')->with('success', 'Berhasil diperbarui');
-        dd('berhasil');
+        return redirect('/user-profile')->with('success', 'Berhasil diperbarui');
+        // dd('berhasil');
     }
 
     /**

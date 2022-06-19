@@ -2,25 +2,25 @@
 		<div class="sidebar-wrapper" data-simplebar="true">
 			<div class="sidebar-header">
 				<div>
-					<img src="{{ asset('assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
+					<a href="/"><img src="{{ asset('assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon"></a> 
 				</div>
 				<div>
-					<h4 class="logo-text">Saras Medika</h4>
+					<a href="/"><h4 class="logo-text">Saras Medika</h4></a> 
 				</div>
 				<div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
 				</div>
 			</div>
 			<!--navigation-->
 			<ul class="metismenu" id="menu">
-				{{-- @if((Auth::user()->role ?? '') == 'Pasien') --}}
+				
 				<li>
 					<a href="{{ url('dashboard') }}" class="">
 						<div class="parent-icon"><i class='bx bx-home-circle'></i>
 						</div>
-						<div class="menu-title">Home</div>
+						<div class="menu-title">Dashboard</div>
 					</a>
 				</li>
-				
+				@if((Auth::user()->role ?? '') == 'Pasien')
 				<li>
 					<a href="{{ url('user-profile') }}">
 						<div class="parent-icon"><i class="bx bx-user-circle"></i>
@@ -28,6 +28,7 @@
 						<div class="menu-title">User Profile</div>
 					</a>
 				</li>
+				@endif
 				@if((Auth::user()->role ?? '') == 'Admin')
 				<li>
 					<a href="{{ url('user-management') }}">
@@ -37,6 +38,7 @@
 					</a>
 				</li>
 				@endif
+				@if((Auth::user()->role ?? '') == 'Pasien')
 				<li class="">
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="bx bx-donate-blood"></i>
@@ -65,6 +67,7 @@
 						<div class="menu-title">Rekam Medis</div>
 					</a>
 				</li> --}}
+				{{-- @if((Auth::user()->role ?? '') == 'Pasien') --}}
 				<li class="header-message-list">
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="bx bx-notepad"></i>
@@ -78,6 +81,8 @@
 						</li>
 					</ul>
 				</li>
+				@endif
+				{{-- @endif --}}
 			</ul>
 			<!--end navigation-->
 		</div>

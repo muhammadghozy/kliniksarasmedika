@@ -24,6 +24,7 @@
 			<!--end breadcrumb-->
 			<h6 class="mb-0 text-uppercase">Rekam Medis Rawat Jalan</h6>
 			<hr/>
+			@if((Auth::user()->role ?? '') == 'Pasien')
 			<div class="card">
 				<div class="card-body">
 					<div class="table-responsive">
@@ -40,22 +41,57 @@
 							</thead>
 							<tbody>
 								@foreach ($rawat_jalans as $rawat_jalan)
-								@foreach ($tanggal)
+								{{-- @foreach ($tanggal) --}}
 								<tr>
 									<td>{{ $loop->iteration }}</td>
 									{{-- <td>{{ $rawat_jalan->nama }}</td> --}}
 									<td>{{ $rawat_jalan->keluhan }}</td>
 									<td>{{ $rawat_jalan->diagnosis }}</td>
 									<td>{{ $rawat_jalan->tindakan }}</td>
-									<td>{{ $tanggal }}</td>
+									<td></td>
 								</tr>								
-								@endforeach
+								{{-- @endforeach --}}
 								@endforeach
 							</tbody>
 						</table>
 					</div>
 				</div>
 			</div>
+			@endif
+			@if((Auth::user()->role ?? '') == 'Dokter')
+			<div class="card">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table id="example2" class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Nama</th>
+									<th>Keluhan</th>
+									<th>Diagnosis</th>
+									<th>Tindakan</th>
+									<th>Tanggal Periksa</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach ($datas as $data)
+								{{-- @foreach ($tanggal) --}}
+								<tr>
+									<td>{{ $loop->iteration }}</td>
+									<td>{{ $data->nama }}</td>
+									<td>{{ $data->keluhan }}</td>
+									<td>{{ $data->diagnosis }}</td>
+									<td>{{ $data->tindakan }}</td>
+									<td></td>
+								</tr>								
+								{{-- @endforeach --}}
+								@endforeach
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			@endif
 		</div>
 	</div>
 	<!--end page wrapper -->

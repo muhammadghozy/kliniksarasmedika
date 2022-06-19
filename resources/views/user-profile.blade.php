@@ -29,6 +29,18 @@
 						</div>
 					</div> --}}
 				</div>
+				@if(session()->has('success'))
+					<div class="alert border-0 border-start border-5 border-white alert-dismissible fade show py-2">
+						<div class="d-flex align-items-center">
+							<div class="font-35 text-white"><i class='bx bxs-check-circle'></i>
+							</div>
+							<div class="ms-3">
+								{{ session('success') }}
+							</div>
+						</div>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				@endif
 				<!--end breadcrumb-->
 				
 				<div class="container">

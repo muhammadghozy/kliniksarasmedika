@@ -34,9 +34,12 @@ Route::get('/rawat-inap', function () {
     return view('rawat-inap');
 });
 
+Route::get('/edit-rawat-jalan', function () {
+    return view('edit-rawat-jalan');
+});
 
-Route::get('/rawat-jalan-dokter', function () {
-    return view('rawat-jalan-dokter');
+Route::get('/edit-rawat-inap', function () {
+    return view('edit-rawat-inap');
 });
 
 Route::get('/jadwal-praktik', function () {
@@ -73,6 +76,7 @@ Route::get('/user-management', function () {
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 // Register
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RawatInap;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RawatInapController extends Controller
 {
@@ -14,8 +15,14 @@ class RawatInapController extends Controller
      */
     public function index()
     {
+        $users = DB::table('users')
+            ->join('rawat_inaps', 'users.id', '=', 'rawat_inaps.id_user')
+            ->select('users.nama', 'rawat_inaps.keluhan', 'rawat_inaps.diagnosis', 'rawat_inaps.obat', 'rawat_inaps.created_at')
+            ->get();
+
         return view('rekam-medis-rawat-inap',[
-            'rawat_inaps' => RawatInap::where('id_user', auth()->user()->id)->get()
+            'rawat_inaps' => RawatInap::where('id_user', auth()->user()->id)->get(),
+            'datas' => $users
         ]);
     }
 
@@ -26,7 +33,14 @@ class RawatInapController extends Controller
      */
     public function create()
     {
-        return view('rawat-inap');
+        $users = DB::table('users')
+            ->join('rawat_inaps', 'users.id', '=', 'rawat_inaps.id_user')
+            ->select('users.nama', 'rawat_inaps.keluhan')
+            ->get();
+
+        return view('rawat-inap',[
+            'datas' => $users
+        ]);
     }
 
     /**

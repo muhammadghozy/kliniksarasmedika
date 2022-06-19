@@ -24,6 +24,7 @@
 				<!--end breadcrumb-->
 				<h6 class="mb-0 text-uppercase">Rekam Medis Rawat Inap</h6>
 				<hr/>
+				@if((Auth::user()->role ?? '') == 'Pasien')
 				<div class="card">
 					<div class="card-body">
 						<div class="table-responsive">
@@ -54,6 +55,39 @@
 						</div>
 					</div>
 				</div>
+				@endif
+				@if((Auth::user()->role ?? '') == 'Dokter')
+				<div class="card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table id="example2" class="table table-striped table-bordered">
+								<thead>									
+									<tr>
+										<th>No</th>
+										<th>Nama</th>
+										<th>Keluhan</th>
+										<th>Diagnosis</th>
+										<th>Obat</th>
+										<th>Tanggal Masuk</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach ($datas as $data)
+									<tr>
+										<td>{{ $loop->iteration }}</td>
+										<td>{{ $data->nama }}</td>
+										<td>{{ $data->keluhan }}</td>
+										<td>{{ $data->diagnosis }}</td>
+										<td>{{ $data->obat }}</td>
+										<td>{{ $data->created_at }}</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				@endif
 			</div>
 		</div>
 		<!--end page wrapper -->
