@@ -54,29 +54,29 @@
 							<h5 class="mb-0 text-white">Formulir Pendaftaran Rawat Inap Pasien</h5>
 						</div>
 						<hr>
-						<form class="row g-3" action="/rawat-jalan-dokter/{{ auth()->user()->id }}" method="POST" enctype="multipart/form-data">
+						<form class="row g-3" action="/edit-rawat-inap/{{ auth()->user()->id }}" method="POST" enctype="multipart/form-data">
 							@method("patch")
                             @csrf
 							
 							<div class="col-md-12">
 								<label for="ttl" class="form-label">Tempat, Tanggal Lahir</label>
-								<input type="text" name="ttl" class="form-control" id="ttl" placeholder="Tempat, Tanggal Lahir" value="{{ auth()->user()->ttl }}" disabled>
+								<input type="text" name="ttl" class="form-control" id="ttl" placeholder="Tempat, Tanggal Lahir" value="{{ $datas->ttl }}" disabled>
 							</div>
 							<div class="col-md-12">
 								<label for="bb" class="form-label">Berat Badan</label>
-								<input type="text" name="bb" class="form-control" id="bb" placeholder="Berat Badan" value="{{ auth()->user()->bb }}">
+								<input type="text" name="bb" class="form-control" id="bb" placeholder="Berat Badan" value="${{ $datas->bb }}">
 							</div>
 							<div class="col-md-12">
 								<label for="tb" class="form-label">Tinggi Badan</label>
-								<input type="text" name="tb" class="form-control" id="tb" placeholder="Tinggi Badan" value="{{ auth()->user()->tb }}">
+								<input type="text" name="tb" class="form-control" id="tb" placeholder="Tinggi Badan" value="{{ $datas->tb }}">
 							</div>
 							<div class="col-md-12">
 								<label for="td" class="form-label">Tekanan Darah</label>
-								<input type="text" name="td" class="form-control" id="td" placeholder="Tekanan Darah" value="{{ auth()->user()->td }}">
+								<input type="text" name="td" class="form-control" id="td" placeholder="Tekanan Darah" value="{{ $datas->td }}">
 							</div>
 							<div class="col-12">
 								<label for="keluhan" class="form-label">Keluhan</label>
-								<textarea type="text" name="keluhan" class="form-control" id="keluhan" placeholder="Keluhan" rows="3" required value="{{ auth()->user()->keluhan }}"></textarea>
+								<textarea type="text" name="keluhan" class="form-control" id="keluhan" placeholder="Keluhan" rows="3" required value="{{ $datas->keluhan }}"></textarea>
 							</div>
 							@if((Auth::user()->role ?? '') == 'Dokter')
 							<div class="col-12">
@@ -90,7 +90,7 @@
 							</div>				
 							<div class="col-12">
 								<button type="submit" class="btn btn-light px-5">Simpan</button>
-							</div>							
+							</div>					
 						</form>
 					</div>
 				</div>

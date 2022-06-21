@@ -34,9 +34,7 @@ Route::get('/rawat-inap', function () {
     return view('rawat-inap');
 });
 
-Route::get('/edit-rawat-jalan', function () {
-    return view('edit-rawat-jalan');
-});
+
 
 Route::get('/edit-rawat-inap', function () {
     return view('edit-rawat-inap');
@@ -93,6 +91,8 @@ Route::patch('/user-profile/{id}', [UserDataController::class, 'update'])->name(
 Route::get('/rawat-jalan', [RawatJalanController::class, 'create'])->middleware('auth');
 Route::post('/rawat-jalan', [RawatJalanController::class, 'store']);
 Route::resource('/rekam-medis-rawat-jalan', RawatJalanController::class);
+Route::get('/edit-rawat-jalan',[RawatJalanController::class, 'edit']);
+Route::patch('/edit-rawat-jalan',[RawatJalanController::class, 'update'])->name('update');
 
 Route::get('/rawat-inap', [RawatInapController::class, 'create'])->middleware('auth');
 Route::post('/rawat-inap', [RawatInapController::class, 'store']);

@@ -85,9 +85,16 @@ class RawatJalanController extends Controller
      * @param  \App\Models\RawatJalan  $rawatJalan
      * @return \Illuminate\Http\Response
      */
-    public function edit(RawatJalan $rawatJalan)
+    public function edit()
     {
-        //
+        $users = DB::table('users')
+            ->join('rawat_jalans', 'users.id', '=', 'rawat_jalans.id_user')
+            ->select('users.ttl', 'rawat_jalans.id', 'rawat_jalans.bb', 'rawat_jalans.tb', 'rawat_jalans.td', 'rawat_jalans.keluhan', 'rawat_jalans.diagnosis', 'rawat_jalans.tindakan')
+            ->get();
+
+        return view('edit-rawat-jalan',[
+            'datas' => $users
+        ]);
     }
 
     /**
@@ -99,7 +106,14 @@ class RawatJalanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        RawatJalan::updateOrCreate(
+            ['id' => $id],
+            ['bb' => $request->bb, 
+                'tb'    => $request->tb,
+                'td'     => $request->td,
+                'diagnosis'    => $request->diagnosis,
+                'tindakan'     => $request->tindakan,]
+            );
     }
 
     /**
