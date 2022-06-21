@@ -78,6 +78,7 @@
 								<label for="keluhan" class="form-label">Keluhan</label>
 								<textarea type="text" name="keluhan" class="form-control" id="keluhan" placeholder="Keluhan" rows="3" required value="{{ auth()->user()->keluhan }}"></textarea>
 							</div>
+							@if((Auth::user()->role ?? '') == 'Dokter')
 							<div class="col-12">
 								<label for="diagnosis" class="form-label">Diagnosis</label>
 								<textarea type="text" name="diagnosis" class="form-control @error ('diagnosis') is-invalid @enderror" id="diagnosis" placeholder="Diagnosis" rows="3" required value="{{ old('diagnosis') }}"></textarea>
@@ -85,9 +86,10 @@
 							<div class="col-12">
 								<label for="tindakan" class="form-label">Tindakan</label>
 								<textarea type="text" name="tindakan" class="form-control @error ('tindakan') is-invalid @enderror" id="tindakan" placeholder="Tindakan" rows="3" required value="{{ old('tindakan') }}"></textarea>
-							</div>				
+							</div>
+							@endif			
 							<div class="col-12">
-								<button type="submit" class="btn btn-light px-5">Kirim</button>
+								<button type="submit" class="btn btn-light px-5">Simpan</button>
 							</div>							
 						</form>
 					</div>

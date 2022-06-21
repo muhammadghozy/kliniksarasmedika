@@ -19,6 +19,9 @@
 						@if((Auth::user()->role ?? '') == 'Pasien')
 						<li class="breadcrumb-item active" aria-current="page">Formulir Pendaftaran</li>
 						@endif
+						@if((Auth::user()->role ?? '') == 'Perawat')
+						<li class="breadcrumb-item active" aria-current="page">Data Pendaftaran Pasien</li>
+						@endif
 						@if((Auth::user()->role ?? '') == 'Dokter')
 						<li class="breadcrumb-item active" aria-current="page">Data Pendaftaran Pasien</li>
 						@endif
@@ -71,7 +74,7 @@
 								<label for="ttl" class="form-label">Tempat, Tanggal Lahir</label>
 								<input type="text" name="ttl" class="form-control" id="ttl" placeholder="Tempat, Tanggal Lahir" value="{{ auth()->user()->ttl }}" disabled>
 							</div>
-							<div class="col-md-12">
+							{{-- <div class="col-md-12">
 								<label for="bb" class="form-label">Berat Badan</label>
 								<input type="text" name="bb" class="form-control" id="bb" placeholder="Berat Badan" value="{{ old('bb') }}">
 							</div>
@@ -82,7 +85,7 @@
 							<div class="col-md-12">
 								<label for="td" class="form-label">Tekanan Darah</label>
 								<input type="text" name="td" class="form-control" id="td" placeholder="Tekanan Darah" value="{{ old('td') }}">
-							</div>
+							</div> --}}
 							<div class="col-12">
 								<label for="keluhan" class="form-label">Keluhan</label>
 								<textarea type="text" name="keluhan" class="form-control @error ('keluhan') is-invalid @enderror" id="keluhan" placeholder="Keluhan" rows="3" required value="{{ old('keluhan') }}"></textarea>
@@ -110,6 +113,37 @@
 				</div>
 				@endif
 
+				@if((Auth::user()->role ?? '') == 'Perawat')
+				<div class="card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table id="example2" class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>No</th>
+										<th>Nama</th>
+										<th>Keluhan</th>
+										<th>Aksi</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach ($datas as $data)
+									<tr>
+										<td>{{ $loop->iteration }}</td>
+										<td>{{ $data->nama }}</td>
+										<td>{{ $data->keluhan }}</td>
+										<td>
+											{{-- <button type="submit" class="btn btn-light"><a href=""><i class="fadeIn animated bx bx-detail"></i></a></button> --}}
+											<a href="/edit-rawat-jalan"><button type="submit" class="btn btn-light"><i class="fadeIn animated bx bx-pencil"></i></button></a>
+										</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				@endif
 				@if((Auth::user()->role ?? '') == 'Dokter')
 				<div class="card">
 					<div class="card-body">

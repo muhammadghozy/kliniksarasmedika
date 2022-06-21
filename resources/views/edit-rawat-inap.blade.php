@@ -78,16 +78,18 @@
 								<label for="keluhan" class="form-label">Keluhan</label>
 								<textarea type="text" name="keluhan" class="form-control" id="keluhan" placeholder="Keluhan" rows="3" required value="{{ auth()->user()->keluhan }}"></textarea>
 							</div>
+							@if((Auth::user()->role ?? '') == 'Dokter')
 							<div class="col-12">
 								<label for="diagnosis" class="form-label">Diagnosis</label>
 								<textarea type="text" name="diagnosis" class="form-control @error ('diagnosis') is-invalid @enderror" id="diagnosis" placeholder="Diagnosis" rows="3" required value="{{ old('diagnosis') }}"></textarea>
 							</div>
+							@endif
 							<div class="col-12">
 								<label for="obat" class="form-label">Obat</label>
 								<textarea type="text" name="obat" class="form-control @error ('obat') is-invalid @enderror" id="obat" placeholder="Obat" rows="3" required value="{{ old('obat') }}"></textarea>
 							</div>				
 							<div class="col-12">
-								<button type="submit" class="btn btn-light px-5">Kirim</button>
+								<button type="submit" class="btn btn-light px-5">Simpan</button>
 							</div>							
 						</form>
 					</div>

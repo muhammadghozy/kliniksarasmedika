@@ -72,17 +72,17 @@ class RekamJalanController extends Controller
      */
     public function update(Request $request, RekamJalan $rekamJalan)
     {
-        RawatJalan::updateOrCreate(
-            ['id' => $id],
-            ['nama' => $request->nama, 
-                'nik'    => $request->nik,
-                'ttl'     => $request->ttl,
-                'telp'    => $request->telp,
-                'alamat'     => $request->alamat,]
-        );
+        // RawatJalan::updateOrCreate(
+        //     ['id' => $id],
+        //     ['nama' => $request->nama, 
+        //         'nik'    => $request->nik,
+        //         'ttl'     => $request->ttl,
+        //         'telp'    => $request->telp,
+        //         'alamat'     => $request->alamat,]
+        // );
     
-            return redirect('/user-profile')->with('success', 'Berhasil diperbarui');
-            // dd('berhasil');
+        //     return redirect('/user-profile')->with('success', 'Berhasil diperbarui');
+        //     dd('berhasil');
     }
 
     /**

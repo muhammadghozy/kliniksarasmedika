@@ -33,6 +33,9 @@
 								<tr>
 									<th>No</th>
 									{{-- <th>Nama</th> --}}
+									<th>Berat Badan (kg)</th>
+									<th>Tinggi Badan (cm)</th>
+									<th>Tekanan Darah</th>
 									<th>Keluhan</th>
 									<th>Diagnosis</th>
 									<th>Tindakan</th>
@@ -45,6 +48,9 @@
 								<tr>
 									<td>{{ $loop->iteration }}</td>
 									{{-- <td>{{ $rawat_jalan->nama }}</td> --}}
+									<td>{{ $rawat_jalan->bb }}</td>
+									<td>{{ $rawat_jalan->tb }}</td>
+									<td>{{ $rawat_jalan->td }}</td>
 									<td>{{ $rawat_jalan->keluhan }}</td>
 									<td>{{ $rawat_jalan->diagnosis }}</td>
 									<td>{{ $rawat_jalan->tindakan }}</td>

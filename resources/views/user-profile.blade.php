@@ -144,7 +144,7 @@
 											<div class="col-sm-3"></div>
 											<div class="col-sm-9">
 												{{-- <input type="submit" class="btn btn-light px-4" value="Simpan Perubahan" /> --}}
-												<button type="submit" class="btn btn-light">Simpan Perubahan</button>
+												<button type="submit" class="btn btn-light">Simpan</button>
 											</div>
 										</div>
 										</form>

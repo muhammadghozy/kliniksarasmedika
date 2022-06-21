@@ -20,7 +20,7 @@
 						<div class="menu-title">Dashboard</div>
 					</a>
 				</li>
-				@if((Auth::user()->role ?? '') == 'Pasien')
+				{{-- @if((Auth::user()->role ?? '') == 'Pasien') --}}
 				<li>
 					<a href="{{ url('user-profile') }}">
 						<div class="parent-icon"><i class="bx bx-user-circle"></i>
@@ -28,7 +28,7 @@
 						<div class="menu-title">User Profile</div>
 					</a>
 				</li>
-				@endif
+				{{-- @endif --}}
 				@if((Auth::user()->role ?? '') == 'Admin')
 				<li>
 					<a href="{{ url('user-management') }}">
@@ -38,7 +38,7 @@
 					</a>
 				</li>
 				@endif
-				@if((Auth::user()->role ?? '') == 'Pasien')
+				{{-- @if((Auth::user()->role ?? '') == 'Pasien') --}}
 				<li class="">
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="bx bx-donate-blood"></i>
@@ -81,7 +81,7 @@
 						</li>
 					</ul>
 				</li>
-				@endif
+				{{-- @endif --}}
 				{{-- @endif --}}
 			</ul>
 			<!--end navigation-->
