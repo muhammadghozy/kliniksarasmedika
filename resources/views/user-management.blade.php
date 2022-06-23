@@ -37,14 +37,17 @@
 								</tr>
 							</thead>
 							<tbody>
-								{{-- <tr>
+								@foreach ($users as $user)
+								<tr>
 									<td>{{ $loop->iteration }}</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-                                </tr> --}}
+									<td>{{ $user->nama }}</td>
+									<td>{{ $user->role }}</td>
+									<td>
+										{{-- <button type="submit" class="btn btn-light"><a href=""><i class="fadeIn animated bx bx-detail"></i></a></button> --}}
+										<a href="/edit-user"><button type="submit" class="btn btn-light"><i class="fadeIn animated bx bx-pencil"></i></button></a>
+									</td>
+								</tr>
+								@endforeach
 							</tbody>
 						</table>
 					</div>

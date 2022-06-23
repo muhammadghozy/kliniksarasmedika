@@ -56,7 +56,71 @@
 					</div>
 				</div>
 				@endif
+				@if((Auth::user()->role ?? '') == 'Perawat')
+				<div class="card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table id="example2" class="table table-striped table-bordered">
+								<thead>									
+									<tr>
+										<th>No</th>
+										<th>Nama</th>
+										<th>Keluhan</th>
+										<th>Diagnosis</th>
+										<th>Obat</th>
+										<th>Tanggal Masuk</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach ($datas as $data)
+									<tr>
+										<td>{{ $loop->iteration }}</td>
+										<td>{{ $data->nama }}</td>
+										<td>{{ $data->keluhan }}</td>
+										<td>{{ $data->diagnosis }}</td>
+										<td>{{ $data->obat }}</td>
+										<td>{{ $data->created_at }}</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				@endif
 				@if((Auth::user()->role ?? '') == 'Dokter')
+				<div class="card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table id="example2" class="table table-striped table-bordered">
+								<thead>									
+									<tr>
+										<th>No</th>
+										<th>Nama</th>
+										<th>Keluhan</th>
+										<th>Diagnosis</th>
+										<th>Obat</th>
+										<th>Tanggal Masuk</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach ($datas as $data)
+									<tr>
+										<td>{{ $loop->iteration }}</td>
+										<td>{{ $data->nama }}</td>
+										<td>{{ $data->keluhan }}</td>
+										<td>{{ $data->diagnosis }}</td>
+										<td>{{ $data->obat }}</td>
+										<td>{{ $data->created_at }}</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				@endif
+				@if((Auth::user()->role ?? '') == 'Admin')
 				<div class="card">
 					<div class="card-body">
 						<div class="table-responsive">
@@ -99,7 +163,7 @@
 	<script>
 		$(document).ready(function() {
 			$('#example').DataTable();
-		  } );
+		} );
 	</script>
 	<script>
 		$(document).ready(function() {
@@ -107,7 +171,7 @@
 				lengthChange: false,
 				// buttons: [ 'copy', 'excel', 'pdf', 'print']
 			} );
-		 
+		
 			table.buttons().container()
 				.appendTo( '#example2_wrapper .col-md-6:eq(0)' );
 		} );

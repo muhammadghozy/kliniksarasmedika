@@ -35,7 +35,8 @@ class RawatJalanController extends Controller
     {
         $users = DB::table('users')
             ->join('rawat_jalans', 'users.id', '=', 'rawat_jalans.id_user')
-            ->select('users.nama', 'rawat_jalans.keluhan')
+            ->select('users.nama', 'rawat_jalans.id', 'rawat_jalans.keluhan', 'rawat_jalans.created_at')
+            ->orderBy ('created_at', 'desc')
             ->get();
 
         return view('rawat-jalan',[
@@ -85,15 +86,16 @@ class RawatJalanController extends Controller
      * @param  \App\Models\RawatJalan  $rawatJalan
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
         $users = DB::table('users')
             ->join('rawat_jalans', 'users.id', '=', 'rawat_jalans.id_user')
             ->select('users.ttl', 'rawat_jalans.id', 'rawat_jalans.bb', 'rawat_jalans.tb', 'rawat_jalans.td', 'rawat_jalans.keluhan', 'rawat_jalans.diagnosis', 'rawat_jalans.tindakan')
+            ->where('rawat_jalans.id', $id)
             ->get();
 
         return view('edit-rawat-jalan',[
-            'datas' => $users
+            'datas' => $users[0]
         ]);
     }
 
@@ -114,6 +116,8 @@ class RawatJalanController extends Controller
                 'diagnosis'    => $request->diagnosis,
                 'tindakan'     => $request->tindakan,]
             );
+
+            return redirect('/rawat-jalan')->with('success', 'Update rawat jalan berhasil');
     }
 
     /**

@@ -25,6 +25,9 @@
 						@if((Auth::user()->role ?? '') == 'Dokter')
 						<li class="breadcrumb-item active" aria-current="page">Data Pendaftaran Pasien</li>
 						@endif
+						@if((Auth::user()->role ?? '') == 'Admin')
+						<li class="breadcrumb-item active" aria-current="page">Data Pendaftaran Pasien</li>
+						@endif
 					</ol>
 				</nav>
 			</div>
@@ -95,7 +98,7 @@
 								</div>
 								@enderror
 							</div>
-							@if((Auth::user()->role ?? '') == 'Dokter')
+							{{-- @if((Auth::user()->role ?? '') == 'Dokter')
 							<div class="col-12">
 								<label for="diagnosis" class="form-label">Diagnosis</label>
 								<textarea type="text" name="diagnosis" class="form-control" id="diagnosis" placeholder="Diagnosis" rows="3" value="{{ old('diagnosis') }}"></textarea>
@@ -104,7 +107,7 @@
 								<label for="tindakan" class="form-label">Tindakan</label>
 								<textarea type="text" name="tindakan" class="form-control" id="tindakan" placeholder="Tindakan" rows="3" value="{{ old('tindakan') }}"></textarea>
 							</div>
-							@endif					
+							@endif					 --}}
 							<div class="col-12">
 								<button type="submit" class="btn btn-light px-5">Kirim</button>
 							</div>							
@@ -134,7 +137,7 @@
 										<td>{{ $data->keluhan }}</td>
 										<td>
 											{{-- <button type="submit" class="btn btn-light"><a href=""><i class="fadeIn animated bx bx-detail"></i></a></button> --}}
-											<a href="/edit-rawat-jalan"><button type="submit" class="btn btn-light"><i class="fadeIn animated bx bx-pencil"></i></button></a>
+											<a href="/edit-rawat-jalan/{id}"><button type="submit" class="btn btn-light"><i class="fadeIn animated bx bx-pencil"></i></button></a>
 										</td>
 									</tr>
 									@endforeach
@@ -144,7 +147,40 @@
 					</div>
 				</div>
 				@endif
+
 				@if((Auth::user()->role ?? '') == 'Dokter')
+				<div class="card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table id="example2" class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>No</th>
+										<th>Nama</th>
+										<th>Keluhan</th>
+										<th>Aksi</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach ($datas as $data)
+									<tr>
+										<td>{{ $loop->iteration }}</td>
+										<td>{{ $data->nama }}</td>
+										<td>{{ $data->keluhan }}</td>
+										<td>
+											{{-- <button type="submit" class="btn btn-light"><a href=""><i class="fadeIn animated bx bx-detail"></i></a></button> --}}
+											<a href="/edit-rawat-jalan/{{ $data->id }}"><button type="submit" class="btn btn-light"><i class="fadeIn animated bx bx-pencil"></i></button></a>
+										</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				@endif
+
+				@if((Auth::user()->role ?? '') == 'Admin')
 				<div class="card">
 					<div class="card-body">
 						<div class="table-responsive">

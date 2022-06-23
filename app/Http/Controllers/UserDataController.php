@@ -15,7 +15,9 @@ class UserDataController extends Controller
      */
     public function index()
     {
-        
+        return view('user-management',[
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -58,7 +60,9 @@ class UserDataController extends Controller
      */
     public function edit(User $userData)
     {
-        // return view('user-profile');
+        return view('edit-user',[
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -77,7 +81,8 @@ class UserDataController extends Controller
             'nik'    => $request->nik,
             'ttl'     => $request->ttl,
             'telp'    => $request->telp,
-            'alamat'     => $request->alamat,]
+            'alamat'     => $request->alamat,
+            'role' => $request->role,]
     );
 
         return redirect('/user-profile')->with('success', 'Berhasil diperbarui');

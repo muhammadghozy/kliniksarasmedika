@@ -56,9 +56,6 @@ Route::get('/rekam-medis-rawat-inap-admin', function () {
     return view('rekam-medis-rawat-inap-admin');
 });
 
-Route::get('/user-management', function () {
-    return view('user-management');
-});
 
 
 
@@ -87,12 +84,17 @@ Route::get('/dashboard', function (){
 
 // Route::get('/user-profile', [UserDataController::class, 'edit'])->middleware('auth');
 Route::patch('/user-profile/{id}', [UserDataController::class, 'update'])->name('update');
+Route::get('/user-management', [UserDataController::class, 'index'])->middleware('auth');
+Route::get('/edit-user', [UserDataController::class, 'edit']);
+Route::patch('/edit-user', [UserDataController::class, 'update']);
+
 
 Route::get('/rawat-jalan', [RawatJalanController::class, 'create'])->middleware('auth');
 Route::post('/rawat-jalan', [RawatJalanController::class, 'store']);
 Route::resource('/rekam-medis-rawat-jalan', RawatJalanController::class);
-Route::get('/edit-rawat-jalan',[RawatJalanController::class, 'edit']);
-Route::patch('/edit-rawat-jalan',[RawatJalanController::class, 'update'])->name('update');
+
+Route::get('/edit-rawat-jalan/{id}',[RawatJalanController::class, 'edit']);
+Route::patch('/update-rawat-jalan/{id}',[RawatJalanController::class, 'update'])->name('update');
 
 Route::get('/rawat-inap', [RawatInapController::class, 'create'])->middleware('auth');
 Route::post('/rawat-inap', [RawatInapController::class, 'store']);
