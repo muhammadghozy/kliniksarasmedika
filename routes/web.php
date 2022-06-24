@@ -99,3 +99,6 @@ Route::patch('/update-rawat-jalan/{id}',[RawatJalanController::class, 'update'])
 Route::get('/rawat-inap', [RawatInapController::class, 'create'])->middleware('auth');
 Route::post('/rawat-inap', [RawatInapController::class, 'store']);
 Route::resource('/rekam-medis-rawat-inap', RawatInapController::class);
+
+Route::get('/edit-rawat-inap/{id}',[RawatInapController::class, 'edit']);
+Route::patch('/update-rawat-inap/{id}',[RawatInapController::class, 'update'])->name('update');

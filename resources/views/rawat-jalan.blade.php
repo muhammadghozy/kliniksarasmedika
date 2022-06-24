@@ -137,7 +137,7 @@
 										<td>{{ $data->keluhan }}</td>
 										<td>
 											{{-- <button type="submit" class="btn btn-light"><a href=""><i class="fadeIn animated bx bx-detail"></i></a></button> --}}
-											<a href="/edit-rawat-jalan/{id}"><button type="submit" class="btn btn-light"><i class="fadeIn animated bx bx-pencil"></i></button></a>
+											<a href="/edit-rawat-jalan/{{ $data->id }}"><button type="submit" class="btn btn-light"><i class="fadeIn animated bx bx-pencil"></i></button></a>
 										</td>
 									</tr>
 									@endforeach
@@ -201,7 +201,7 @@
 										<td>{{ $data->keluhan }}</td>
 										<td>
 											{{-- <button type="submit" class="btn btn-light"><a href=""><i class="fadeIn animated bx bx-detail"></i></a></button> --}}
-											<a href="/edit-rawat-jalan"><button type="submit" class="btn btn-light"><i class="fadeIn animated bx bx-pencil"></i></button></a>
+											<a href="/edit-rawat-jalan/{{ $data->id }}"><button type="submit" class="btn btn-light"><i class="fadeIn animated bx bx-pencil"></i></button></a>
 										</td>
 									</tr>
 									@endforeach

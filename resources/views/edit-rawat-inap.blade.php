@@ -54,7 +54,7 @@
 							<h5 class="mb-0 text-white">Formulir Pendaftaran Rawat Inap Pasien</h5>
 						</div>
 						<hr>
-						<form class="row g-3" action="/edit-rawat-inap/{{ auth()->user()->id }}" method="POST" enctype="multipart/form-data">
+						<form class="row g-3" action="/update-rawat-inap/{{ $datas->id }}" method="POST" enctype="multipart/form-data">
 							@method("patch")
                             @csrf
 							
@@ -64,7 +64,7 @@
 							</div>
 							<div class="col-md-12">
 								<label for="bb" class="form-label">Berat Badan</label>
-								<input type="text" name="bb" class="form-control" id="bb" placeholder="Berat Badan" value="${{ $datas->bb }}">
+								<input type="text" name="bb" class="form-control" id="bb" placeholder="Berat Badan" value="{{ $datas->bb }}">
 							</div>
 							<div class="col-md-12">
 								<label for="tb" class="form-label">Tinggi Badan</label>
@@ -76,17 +76,17 @@
 							</div>
 							<div class="col-12">
 								<label for="keluhan" class="form-label">Keluhan</label>
-								<textarea type="text" name="keluhan" class="form-control" id="keluhan" placeholder="Keluhan" rows="3" required value="{{ $datas->keluhan }}"></textarea>
+								<textarea type="text" name="keluhan" class="form-control" id="keluhan" placeholder="Keluhan" rows="3">{{ $datas->keluhan }}</textarea>
 							</div>
 							@if((Auth::user()->role ?? '') == 'Dokter')
 							<div class="col-12">
 								<label for="diagnosis" class="form-label">Diagnosis</label>
-								<textarea type="text" name="diagnosis" class="form-control @error ('diagnosis') is-invalid @enderror" id="diagnosis" placeholder="Diagnosis" rows="3" required value="{{ old('diagnosis') }}"></textarea>
+								<textarea type="text" name="diagnosis" class="form-control @error ('diagnosis') is-invalid @enderror" id="diagnosis" placeholder="Diagnosis" rows="3" required value="{{ old('diagnosis') }}">{{ $datas->diagnosis }}</textarea>
 							</div>
 							@endif
 							<div class="col-12">
 								<label for="obat" class="form-label">Obat</label>
-								<textarea type="text" name="obat" class="form-control @error ('obat') is-invalid @enderror" id="obat" placeholder="Obat" rows="3" required value="{{ old('obat') }}"></textarea>
+								<textarea type="text" name="obat" class="form-control @error ('obat') is-invalid @enderror" id="obat" placeholder="Obat" rows="3" required value="{{ old('obat') }}">{{ $datas->obat }}</textarea>
 							</div>				
 							<div class="col-12">
 								<button type="submit" class="btn btn-light px-5">Simpan</button>

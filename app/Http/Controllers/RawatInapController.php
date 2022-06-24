@@ -18,6 +18,7 @@ class RawatInapController extends Controller
         $users = DB::table('users')
             ->join('rawat_inaps', 'users.id', '=', 'rawat_inaps.id_user')
             ->select('users.nama', 'rawat_inaps.keluhan', 'rawat_inaps.diagnosis', 'rawat_inaps.obat', 'rawat_inaps.created_at')
+            ->orderBy('created_at', 'DESC')
             ->get();
 
         return view('rekam-medis-rawat-inap',[
@@ -35,7 +36,8 @@ class RawatInapController extends Controller
     {
         $users = DB::table('users')
             ->join('rawat_inaps', 'users.id', '=', 'rawat_inaps.id_user')
-            ->select('users.nama', 'rawat_inaps.keluhan')
+            ->select('users.nama', 'rawat_inaps.id', 'rawat_inaps.keluhan', 'rawat_inaps.created_at')
+            ->orderBy('created_at', 'desc')
             ->get();
 
         return view('rawat-inap',[
@@ -85,9 +87,17 @@ class RawatInapController extends Controller
      * @param  \App\Models\RawatInap  $rawatInap
      * @return \Illuminate\Http\Response
      */
-    public function edit(RawatInap $rawatInap)
+    public function edit($id)
     {
-        //
+        $users = DB::table('users')
+            ->join('rawat_inaps', 'users.id', '=', 'rawat_inaps.id_user')
+            ->select('users.ttl', 'rawat_inaps.id', 'rawat_inaps.bb', 'rawat_inaps.tb', 'rawat_inaps.td', 'rawat_inaps.keluhan', 'rawat_inaps.diagnosis', 'rawat_inaps.obat')
+            ->where('rawat_inaps.id', $id)
+            ->get();
+
+        return view('edit-rawat-inap',[
+            'datas' => $users[0]
+        ]);
     }
 
     /**
@@ -97,9 +107,18 @@ class RawatInapController extends Controller
      * @param  \App\Models\RawatInap  $rawatInap
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RawatInap $rawatInap)
+    public function update(Request $request, $id)
     {
-        //
+        RawatInap::updateOrCreate(
+            ['id' => $id],
+            ['bb' => $request->bb, 
+                'tb'    => $request->tb,
+                'td'     => $request->td,
+                'diagnosis'    => $request->diagnosis,
+                'obat'     => $request->obat,]
+            );
+
+            return redirect('/rawat-inap')->with('success', 'Update rawat inap berhasil');
     }
 
     /**

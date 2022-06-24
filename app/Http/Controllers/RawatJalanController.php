@@ -18,6 +18,7 @@ class RawatJalanController extends Controller
         $users = DB::table('users')
             ->join('rawat_jalans', 'users.id', '=', 'rawat_jalans.id_user')
             ->select('users.nama', 'rawat_jalans.keluhan', 'rawat_jalans.diagnosis', 'rawat_jalans.tindakan', 'rawat_jalans.created_at')
+            ->orderBy('created_at', 'DESC')
             ->get();
 
         return view('rekam-medis-rawat-jalan',[
