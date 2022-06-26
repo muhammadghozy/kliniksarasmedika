@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserDataController extends Controller
 {
@@ -58,10 +59,14 @@ class UserDataController extends Controller
      * @param  \App\Models\UserData  $userData
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $userData)
+    public function edit($id)
     {
+        $users = DB::table('users')
+            -> where('id', $id)
+            ->get();
+
         return view('edit-user',[
-            'users' => User::all()
+            'datas' => $users[0]
         ]);
     }
 
@@ -77,15 +82,11 @@ class UserDataController extends Controller
 
         User::updateOrCreate(
         ['id' => $id],
-        ['nama' => $request->nama, 
-            'nik'    => $request->nik,
-            'ttl'     => $request->ttl,
-            'telp'    => $request->telp,
-            'alamat'     => $request->alamat,
+        [
             'role' => $request->role,]
     );
 
-        return redirect('/user-profile')->with('success', 'Berhasil diperbarui');
+        return redirect('/user-management')->with('success', 'Berhasil diperbarui');
         // dd('berhasil');
     }
 

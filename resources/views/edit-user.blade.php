@@ -54,7 +54,7 @@
 							<h5 class="mb-0 text-white">Edit User</h5>
 						</div>
 						<hr>
-						{{-- <form class="row g-3" action="/edit-user/{{ auth()->user()->id }}" method="POST" enctype="multipart/form-data">
+						<form class="row g-3" action="/update-user/{{ $datas->id }}" method="POST" enctype="multipart/form-data">
 							@method("patch")
                             @csrf
 							
@@ -64,7 +64,7 @@
 							</div>
 							<div class="col-md-12">
 								<label for="nama" class="form-label">Nama Lengkap</label>
-								<input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Lengkap" value="${{ $datas->nama }}" disabled>
+								<input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Lengkap" value="{{ $datas->nama }}" disabled>
 							</div>
 							<div class="col-md-12">
 								<label for="nik" class="form-label">NIK</label>
@@ -72,29 +72,31 @@
 							</div>
 							<div class="col-md-12">
 								<label for="email" class="form-label">Email</label>
-								<input type="text" name="email" class="form-control" id="email" placeholder="Email" value="{{ $datas->td }}">
+								<input type="text" name="email" class="form-control" id="email" placeholder="Email" value="{{ $datas->email }}">
 							</div>
 							<div class="col-12">
 								<label for="alamat" class="form-label">Alamat</label>
-								<textarea type="text" name="alamat" class="form-control" id="alamat" placeholder="Alamat" rows="3" value="{{ $datas->keluhan }}" disabled></textarea>
+								<textarea type="text" name="alamat" class="form-control" id="alamat" placeholder="Alamat" rows="3" value="{{ $datas->alamat }}" disabled></textarea>
 							</div>
 							<div class="col-12">
 								<label for="telp" class="form-label">Telp</label>
 								<textarea type="text" name="telp" class="form-control" id="telp" placeholder="No telp" rows="3" value="{{ $datas->telp }}" disabled></textarea>
 							</div>
 							<div class="col-md-12">
-                                <label for="inputState" class="form-label">Role</label>
-                                <select id="inputState" class="form-select">
-                                    <option selected>Pasien</option>
+                                <label for="role" class="form-label">Role</label>
+                                <select name="role" id="role" class="form-select">
+                                    <option>{{ $datas->role }}</option>
+                                    <option>Pasien</option>
                                     <option>Perawat</option>
+                                    <option>Apoteker</option>
                                     <option>Dokter</option>
                                 </select>
                             </div>			
 							<div class="col-12">
 								<button type="submit" class="btn btn-light px-5">Simpan</button>
 							</div>					
-						</form> --}}
-                        <form class="row g-3" action="/edit-user" method="POST" enctype="multipart/form-data">
+						</form>
+                        {{-- <form class="row g-3" action="/upate-user" method="POST" enctype="multipart/form-data">
 							@method("patch")
                             @csrf
 							
@@ -133,7 +135,7 @@
 							<div class="col-12">
 								<button type="submit" class="btn btn-light px-5">Simpan</button>
 							</div>					
-						</form>
+						</form> --}}
 					</div>
 				</div>
 		<!--end row-->
