@@ -83,7 +83,7 @@ Route::get('/dashboard', function (){
 
 
 // Route::get('/user-profile', [UserDataController::class, 'edit'])->middleware('auth');
-Route::patch('/user-profile/{id}', [UserDataController::class, 'update'])->name('update');
+Route::patch('/user-profile/{id}', [ProfileController::class, 'update'])->name('update');
 
 Route::get('/user-management', [UserDataController::class, 'index'])->middleware('auth');
 Route::get('/edit-user/{id}', [UserDataController::class, 'edit']);

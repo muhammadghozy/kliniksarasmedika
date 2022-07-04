@@ -7,28 +7,23 @@ use App\Models\User;
 
 class ProfileController extends Controller
 {
-    public function index(){
+    public function edit(){
         return view('user-profile');
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama' => 'max:255',
-            'nik' => 'max:18|unique:users',
-            'ttl' => 'required|max:255',
-			'alamat' => 'required|max:255',
-			'telp' => 'required|max:14',
-        ]);
 
-        auth()->user()->update([
-            'nama' => $request->nama,
-            'nik' => $request->nik,
-            'ttl' => $request->ttl,
-			'alamat' => $request->alamat,
-			'telp' => $request->telp,
-        ]);
+        User::updateOrCreate(
+        ['id' => $id],
+        ['nama' => $request->nama,
+        'nik' => $request->nik,
+        'ttl' => $request->ttl,
+        'telp' => $request->telp,
+            'alamat' => $request->alamat,]
+    );
 
-		return redirect('/user-profile')->with('success', 'Berhasil diperbarui');
+        return redirect('/user-profile')->with('success', 'Berhasil diperbarui');
+        // dd('berhasil');
     }
 }

@@ -23,6 +23,7 @@ class RawatInapController extends Controller
 
         return view('rekam-medis-rawat-inap',[
             'rawat_inaps' => RawatInap::where('id_user', auth()->user()->id)->get(),
+            // 'rawat_inaps' => $inap,
             'datas' => $users
         ]);
     }
